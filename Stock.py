@@ -56,7 +56,7 @@ class Stock():
         """
         dailyReturn = []
         for i in range(0, len(self.price_list)-1):
-            dailyReturn.append(self.price_list[i + 1] - self.price_list[i]) / self.price_list[i]
+            dailyReturn.append((self.price_list[i + 1] - self.price_list[i]) / self.price_list[i])
             
         return dailyReturn
         
@@ -84,12 +84,13 @@ class Stock():
         Returns the variance of the Stock Price Movement for the 
         whole period
         """
-        average = self.getMeanReturn() ### This gives you the mean the Stock
+        average = self.getMeanReturn() 
         all_returns = self.getDailyReturnAll()
 
-        variancelist = [] #Subtract the Mean and square the result
-        for items in range(0, len(all_returns)):
-            variancelist.append((all_returns[items]-average)**2)
+        variancelist = [] 
+        #Subtract the Mean and square the result
+        for i in range(0, len(all_returns)):
+            variancelist.append((all_returns[i]-average)**2)
         
         variance = sum(variancelist)/len(variancelist) #The mean of those squared differences divided by the length is the variance.
         return variance
@@ -126,12 +127,6 @@ class Stock():
 
         return geometricMean
         
-        
-    def getOverallPerformance(self):
-        """
-        ??? 
-        """
-        return None
 
 
 

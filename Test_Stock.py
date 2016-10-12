@@ -10,7 +10,6 @@ import Stock as st
 
 
 
-
 class TestStockMethods(unittest.TestCase):
     
     @classmethod
@@ -24,29 +23,27 @@ class TestStockMethods(unittest.TestCase):
         
     def test_getDailyReturn2(self):
         self.assertEqual(self.stock1.getDailyReturn(0), None)
-        
-    """
-    def test_getMeanReturn(self):
-        self.assertEqual(self.stock1.getMeanReturn(), 0.22)
+       
     
+    def test_getDailyReturnAll(self):
+        self.assertEqual(self.stock1.getDailyReturnAll(), [0,1.5,-0.4,0,0])
     
-    
+    def test_getMeanReturn1(self):
+        self.assertEqual(round(self.stock1.getMeanReturn(), 2), 0.22)
 
+    def test_getMeanReturn2(self):
+        self.assertEqual(round(self.stock2.getMeanReturn(), 2), 1.51)
         
     def test_getYearlyReturn(self):
         self.assertEqual(self.stock1.getYearlyReturn(), 0.5)
         
         
     def test_getStandardDeviation(self):
-        self.assertEqual(self.stock1.getStandardDeviation(), 1)
-    
-    def test_getGeometricMean(self):
-        self.assertEqual(self.stock1.getGeometricMean(), 1.069913194)
-     
-     """
-    
+        self.assertEqual(round(self.stock1.getStandardDeviation(),3), 0.658)
+        
+
+   
 if __name__ == '__main__':
     unittest.main()
     
 
-#3

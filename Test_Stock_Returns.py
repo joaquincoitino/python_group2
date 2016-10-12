@@ -7,6 +7,7 @@ Created on Wed Oct 12 16:05:13 2016
 
 import unittest
 import Stock as st
+import Stock_Returns as str
 
 
 
@@ -18,8 +19,22 @@ class TestStock_ReturnsMethod(unittest.TestCase):
         cls.stock2 = st.Stock('Banana', [4,7,1,9,3,4], 'Energy', 'BANA')
         cls.stock_list = [cls.stock1, cls.stock2]
     
-    def getMinimumDailyReturns(self):
-        self.assertEqual(self.getMinimumDailyReturns(self.stock_list), -X)
+
+    def test_getMinimumDailyReturns(self):
+        self.assertEqual(str.getMinimumDailyReturns(self.stock_list), -0.857142)
+
     
-    def getMaximumDailyReturns(self):
-        self.assertEqual(self.getMinimumDailyReturns(self.stock_list), -X)
+    def test_getMaximumDailyReturns(self):
+        self.assertEqual(str.getMinimumDailyReturns(self.stock_list), 8)
+        
+
+    def test_getCompanyWithLeastVolatility(self):
+        self.assertEqual(str.getCompanyWithLeastVolatility(self.stock_list), (self.stock1, 0.658))
+
+    def test_getCompanyWithHighestVolatility(self):
+        self.assertEqual(str.getCompanyWithLeastVolatility(self.stock_list), (self.stock2, Y))
+
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -14,15 +14,6 @@ of their returns over the year?
 """
 
 import Stock as st
-
-
-def getDailyReturnsForAllStocks(stock_list):
-    """
-    Calculates the daily returns for all stocks 
-    Input: List with all stocks 
-    Output: List with a list of all daily returns for each stock 
-    """
-    return None
     
     
 def getMinimumDailyReturns(stock_list):
