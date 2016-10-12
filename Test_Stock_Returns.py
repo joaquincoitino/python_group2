@@ -9,8 +9,6 @@ import unittest
 import Stock as st
 import Stock_Returns as str
 
-
-
 class TestStock_ReturnsMethod(unittest.TestCase):
 
     @classmethod
@@ -32,7 +30,7 @@ class TestStock_ReturnsMethod(unittest.TestCase):
         self.assertEqual(str.getCompanyWithLeastVolatility(self.stock_list), (self.stock1, 0.658))
 
     def test_getCompanyWithHighestVolatility(self):
-        self.assertEqual(str.getCompanyWithLeastVolatility(self.stock_list), (self.stock2, Y))
+        self.assertEqual(str.getCompanyWithLeastVolatility(self.stock_list), (self.stock2, 3.2991959440977463))
 
 
 
