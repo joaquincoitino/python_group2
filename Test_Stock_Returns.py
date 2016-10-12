@@ -19,18 +19,18 @@ class TestStock_ReturnsMethod(unittest.TestCase):
     
 
     def test_getMinimumDailyReturns(self):
-        self.assertEqual(str.getMinimumDailyReturns(self.stock_list), -0.857142)
+        self.assertEqual(str.getMinimumDailyReturns(self.stock_list), (self.stock2,-0.8571428571428571))
 
     
     def test_getMaximumDailyReturns(self):
-        self.assertEqual(str.getMinimumDailyReturns(self.stock_list), 8)
+        self.assertEqual(str.getMaximumDailyReturns(self.stock_list), (self.stock2,8))
         
 
     def test_getCompanyWithLeastVolatility(self):
-        self.assertEqual(str.getCompanyWithLeastVolatility(self.stock_list), (self.stock1, 0.658))
+        self.assertEqual(str.getCompanyWithLeastVolatility(self.stock_list), (self.stock1, 0.6584831053261732))
 
     def test_getCompanyWithHighestVolatility(self):
-        self.assertEqual(str.getCompanyWithLeastVolatility(self.stock_list), (self.stock2, 3.2991959440977463))
+        self.assertEqual(str.getCompanyWithHighestVolatility(self.stock_list), (self.stock2, 3.2991959440977463))
 
 
 
