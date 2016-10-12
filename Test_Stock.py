@@ -10,7 +10,7 @@ import Stock as st
 
 
 
-class TestStockMethods(unittest.TestCase1):
+class TestStockMethods(unittest.TestCase):
     
     @classmethod
     def setUpClass(cls):
