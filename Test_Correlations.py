@@ -19,4 +19,6 @@ class TestCorrelationsMethods(unittest.TestCase):
     def test_getCorrelation(self):
         self.assertEqual(round(c.getCorrelation(self.stock1, self.stock2),3), -0.657)
         
-    
+
+if __name__ == '__main__':
+    unittest.main()

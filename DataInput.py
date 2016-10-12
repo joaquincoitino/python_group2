@@ -12,8 +12,6 @@ import Correlations as c
 
 
 
-Stock_List = []
-Trade_Dates = []
 
 def readCSVIntoList(name):
     """
@@ -42,6 +40,7 @@ def priceListToMatrix(L):
     """ 
     first_row = L[0]
     header = first_row[1:]
+    trade_dates = []    
     
     
     #Creates a matrix of the size of the csv file with 0s in each cell
@@ -54,9 +53,9 @@ def priceListToMatrix(L):
         row = L[i+1]
         #Strips off the dates row and stores it in a separate list
         price_matrix[i,] = row[1:]
-        Trade_Dates.append(row[0])
+        trade_dates.append(row[0])
     
-    return price_matrix, header 
+    return price_matrix, header, trade_dates 
 
 
 def priceMatrixToStockClasses(pm, header, sectors, names):
@@ -66,6 +65,8 @@ def priceMatrixToStockClasses(pm, header, sectors, names):
     all the names of the companies and the sectors of each company
     Output: List of stocks (stock class) 
     """
+    Stock_List = []
+    
     for i in range(len(header)):
         name = names[i]
         price_movement = pm[:,i]
@@ -73,7 +74,7 @@ def priceMatrixToStockClasses(pm, header, sectors, names):
         symbol = header[i]
         newStock = st.Stock(name, price_movement, sector, symbol)
         Stock_List.append(newStock)
-   
+    return Stock_List
     
 
 def dataPrep():
@@ -81,7 +82,7 @@ def dataPrep():
     Wrap up function calling all the functions defined in this file
     """
     price_sheet = readCSVIntoList('SP_500_close_2015.csv')
-    price_matrix, header = priceListToMatrix(price_sheet)
+    price_matrix, header, trade_dates = priceListToMatrix(price_sheet)
     
     name_sheet = readCSVIntoList('SP_500_firms.csv') 
     names = []
@@ -91,11 +92,13 @@ def dataPrep():
         row = name_sheet[i]
         names.append(row[1])
         sectors.append(row[2])
-           
-    priceMatrixToStockClasses(price_matrix, header, sectors, names)
+    stock_list = priceMatrixToStockClasses(price_matrix, header, sectors, names)
+    return stock_list, trade_dates
     
 
-
+"""
+MAINTENANCE WORK - PLEASE BE PATIENT..
+DOES NOT WORK AT THE MOMENT
 def findStock(symbol):
     for i in range(len(Stock_List)):
         if Stock_List[i].getSymbol()==symbol:
@@ -103,16 +106,16 @@ def findStock(symbol):
         
     #if stock is not in Stock_List (probably wrong spelled?)
     return None
-    
-dataPrep()
-#print(len(Stock_List))
-#for i in range (len(Stock_List)):
-   # print(Stock_List[i].get())
+"""    
+stocks, dates = dataPrep()
+#print(len(stocks))
+#for i in range (len(stocks)):
+#    print(stocks[i].getName())
 #print(Stock_List[3].getPrice_List())
 #print(findStock('YHOO').getName())
 #print(Stock_List[0].getSymbol())
-print(c.getCorrelation(findStock('AAPL'), findStock('MMM')))
-#print(c.getCorrelation(Stock_List[5], Stock_List[80]))
+
+#print(c.getCorrelation(stocks[5], stocks[80]))
 
 
 

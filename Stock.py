@@ -126,6 +126,9 @@ class Stock():
         geometricMean = sumOfDailyReturn**(1/lengthOfReturn)
 
         return geometricMean
+    
+    def __str(self):
+        return self.name
         
 
 
