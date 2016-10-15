@@ -8,6 +8,7 @@ import csv
 import numpy as np
 import Stock as st
 import Correlations as c
+import Stock_List as stl
 
 
 
@@ -93,21 +94,11 @@ def dataPrep():
         names.append(row[1])
         sectors.append(row[2])
     stock_list = priceMatrixToStockClasses(price_matrix, header, sectors, names)
-    return stock_list, trade_dates
+    stock_list_obj = stl.Stock_List(stock_list)
+    return stock_list_obj, trade_dates
     
 
-"""
-MAINTENANCE WORK - PLEASE BE PATIENT..
-DOES NOT WORK AT THE MOMENT
-def findStock(symbol):
-    for i in range(len(Stock_List)):
-        if Stock_List[i].getSymbol()==symbol:
-            return Stock_List[i]
-        
-    #if stock is not in Stock_List (probably wrong spelled?)
-    return None
-"""    
-stocks, dates = dataPrep()
+
 #print(len(stocks))
 #for i in range (len(stocks)):
 #    print(stocks[i].getName())
