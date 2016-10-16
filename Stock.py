@@ -127,7 +127,7 @@ class Stock():
 
         return geometricMean
     
-    def __str(self):
+    def __str__(self):
         return self.name
         
 
